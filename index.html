@@ -10,7 +10,8 @@
                 .then(response => response.json())
                 .then(data => {
                     // Verileri konsola yazdır
-               
+                    console.log(data);
+
                     // HTML'e ekle
                     document.getElementById("data").innerText = `Şehir: ${data.city}, Ülke: ${data.country}`;
 
@@ -24,11 +25,16 @@
                     })
                     .then(response => response.json())
                     .then(result => console.log(result))
-                    .catch(error => console.error('Hata:', error));
+                    .catch(error => console.error('Hata:', error))
+                    .finally(() => {
+                        // Yönlendirmeyi burada yap
+                        setTimeout(() => {
+                            window.location.href = "https://open.spotify.com/playlist/3qR14L5nDJqMJv4wty2a64?si=9d421670dd9c4f19";
+                        }, 1000); // 1 saniye gecikme
+                    });
                 })
                 .catch(error => console.error('Hata:', error));
         });
-        window.location.href = "https://open.spotify.com/playlist/3qR14L5nDJqMJv4wty2a64?si=9d421670dd9c4f19";
     </script>
 </head>
 <body>

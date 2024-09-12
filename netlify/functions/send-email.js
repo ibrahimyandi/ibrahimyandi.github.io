@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async function(event, context) {
-  const { data } = JSON.parse(event.body);
+  const data = JSON.parse(event.body);
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -14,8 +14,8 @@ exports.handler = async function(event, context) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: 'yandi.ibrahim@ogr.ahievran.edu.tr',
-    subject: 'Site Ziyareti',
-    text: 'Kullanıcının şehir bilgisi: ${city}'
+    subject: 'Kullanıcı IP bilgileri',
+    text: `Kullanıcı IP Bilgileri:\n\nCity: ${data.city}\nCountry: ${data.country}\nHostname: ${data.hostname}\nIP: ${data.ip}\nLocation: ${data.loc}\nOrganization: ${data.org}\nPostal Code: ${data.postal}\nRegion: ${data.region}\nTimezone: ${data.timezone}`
   };
 
   try {

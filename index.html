@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kullanıcının Şehri</title>
+    <title>Kullanıcının IP Bilgileri</title>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('https://ipinfo.io/json?token=ab2e93650ced74')  // ipinfo.io'dan aldığınız API token'ı buraya ekleyin
                 .then(response => response.json())
                 .then(data => {
-                    // Şehir bilgisini konsola yazdır
+                    // Verileri konsola yazdır
                     console.log(data);
                     // HTML'e ekle
-                    document.getElementById("data").innerText = data.city;
+                    document.getElementById("data").innerText = `Şehir: ${data.city}, Ülke: ${data.country}`;
 
-                    // Kullanıcı bilgisini Netlify fonksiyonuna gönder
+                    // Veriyi Netlify fonksiyonuna gönder
                     fetch('/.netlify/functions/send-email', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ city: data })
+                        body: JSON.stringify(data)
                     })
                     .then(response => response.json())
                     .then(result => console.log(result))
@@ -31,7 +31,7 @@
     </script>
 </head>
 <body>
-    <h1>Kullanıcının Şehri:</h1>
+    <h1>Kullanıcının IP Bilgileri:</h1>
     <p id="data">Yükleniyor...</p>
 </body>
 </html>

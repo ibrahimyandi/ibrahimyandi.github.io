@@ -22,13 +22,13 @@ exports.handler = async function(event, context) {
     await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'E-posta gönderildi' })
+      body: JSON.stringify({ message: 'LOL' })
     };
   } catch (error) {
-    console.error('E-posta gönderilirken hata oluştu:', error); // Hata mesajını loglayın
+    console.error('SAD:', error); // Hata mesajını loglayın
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'E-posta gönderilemedi' })
+      body: JSON.stringify({ error: 'SAD' })
     };
   }
 };

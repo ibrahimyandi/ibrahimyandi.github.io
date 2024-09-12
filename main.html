@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcının Şehri</title>
+    <script>
+        fetch('https://ipinfo.io/212.239.223.209?token=ab2e93650ced74')  // ipinfo.io'dan aldığınız API token'ı buraya ekleyin
+            .then(response => response.json())
+            .then(data => {
+                // Şehir bilgisini konsola yazdır
+                console.log("Kullanıcının şehri: " + data.city);
+                // HTML'e ekle
+                document.getElementById("city").innerText = "Şehir: " + data.city;
+                console.log(data);
+            })
+            .catch(error => console.error('Hata:', error));
+    </script>
+</head>
+<body>
+    <h1>Kullanıcının Şehri:</h1>
+    <p id="city">Yükleniyor...</p>
+</body>
+</html>

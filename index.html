@@ -10,7 +10,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // Verileri konsola yazdır
-                    console.log(data);
+               
                     // HTML'e ekle
                     document.getElementById("data").innerText = `Şehir: ${data.city}, Ülke: ${data.country}`;
 
